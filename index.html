@@ -1,39 +1,85 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-<title>CalcCap</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalcCap</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+  <!-- INTRO SCREEN -->
+  <div id="intro-screen">
+    <div class="intro-box" id="step-who">
+      <p class="intro-tag">before we begin...</p>
+      <h2>Who are you?</h2>
+      <button class="intro-btn" onclick="pickRole('student')">🎒 Student</button>
+      <button class="intro-btn" onclick="pickRole('teacher')">📖 Teacher / Mentor</button>
+      <button class="intro-btn" onclick="pickRole('professional')">💼 Working Professional</button>
+    </div>
 
-<h1>CalcCap</h1>
+    <div class="intro-box hidden" id="step-student">
+      <p class="intro-tag">ah, a student...</p>
+      <h2>School or Engineering?</h2>
+      <button class="intro-btn" onclick="pickStudent('school')">🏫 School</button>
+      <button class="intro-btn" onclick="pickStudent('engineering')">⚙️ Engineering</button>
+    </div>
 
-<p class="subtitle">
-Sometimes math, sometimes cap.
-</p>
+    <div class="intro-box hidden" id="step-roast">
+      <p id="roast-line"></p>
+      <button class="intro-btn enter-btn" onclick="enterCalc()">Let me in 😤</button>
+    </div>
+  </div>
 
-<input id="num1" type="number" placeholder="Enter first number">
+  <!-- CALCULATOR SCREEN -->
+  <div id="calc-screen" class="hidden">
+    <div class="container" id="calc-container">
 
-<input id="num2" type="number" placeholder="Enter second number">
+      <div class="calc-header">
+        <h1>Calc<span>Cap</span></h1>
+        <p class="subtitle">Sometimes math, sometimes cap.</p>
+      </div>
 
-<select id="operator">
-<option value="+">+</option>
-<option value="-">-</option>
-<option value="*">*</option>
-<option value="/">/</option>
-</select>
+      <div class="inputs-wrap">
+        <input id="num1" type="number" placeholder="First number">
+        <input id="num2" type="number" placeholder="Second number">
+      </div>
 
-<button onclick="calculate()">Calculate</button>
+      <div class="op-row">
+        <label class="op-pill">
+          <input type="radio" name="op" value="+" checked>
+          <span>+</span>
+        </label>
+        <label class="op-pill">
+          <input type="radio" name="op" value="-">
+          <span>−</span>
+        </label>
+        <label class="op-pill">
+          <input type="radio" name="op" value="*">
+          <span>×</span>
+        </label>
+        <label class="op-pill">
+          <input type="radio" name="op" value="/">
+          <span>÷</span>
+        </label>
+      </div>
 
-<h2 id="result">Result: Waiting for math...</h2>
+      <p id="roast-msg"></p>
 
-</div>
+      <div id="btn-arena"></div>
 
-<script src="script.js"></script>
+      <button id="dont-touch-btn" onclick="dontTouchClick()">🚫 Don't Touch This</button>
+
+      <div id="result-box">
+        <p id="result">Waiting for math...</p>
+      </div>
+
+    </div>
+  </div>
+
+  <button id="calcBtn" onclick="calculate()">⚡ Calculate</button>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
